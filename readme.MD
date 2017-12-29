@@ -16,8 +16,9 @@ If you want to not get data from database everytime, you can simply use sweet me
 var (
 	rememberData sweetmemories.Memory
 )
+```
 
-
+```
 	data := []Data{}
 
 	if rememberdata.IsForget() { // if cache is nil
