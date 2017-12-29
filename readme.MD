@@ -35,11 +35,6 @@ func main() {
 			data = getData() // If fail, we can't do anything except get data from your source
 		}
 	}
-
-	log.Println(data)
-
-	time.Sleep(1 * time.Second)
-
 }
 
 func getData() []Data {
