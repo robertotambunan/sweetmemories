@@ -17,7 +17,7 @@ var (
 	rememberData sweetmemories.Memory
 )
 
-func main() {
+
 	data := []Data{}
 
 	if rememberdata.IsForget() { // if cache is nil
@@ -35,7 +35,9 @@ func main() {
 			data = getData() // If fail, we can't do anything except get data from your source
 		}
 	}
-}
+```
+
+```
 
 func getData() []Data {
 	result := []Data{}
