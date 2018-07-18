@@ -4,7 +4,7 @@
 go get -v github.com/robertotambunan/sweetmemories
 
 ### Usage
-Sweet memories is data cache. If you want to save data for a spesific time without any caching tools, you can simply use sweet memories.
+Sweet memories is data cache. If you want to save data for a spesific time without any caching tools, you can simply use sweet memories. Note: you have to consider your memory first. 
 
 ### Example Case
 If you want to not get data from database everytime, you can simply use sweet memories. Use one sweet memories Object to save any kind of data! One object, one responsibility.
@@ -13,30 +13,27 @@ If you want to not get data from database everytime, you can simply use sweet me
 ### Example
 
 ```
-var (
-	rememberData sweetmemories.Memory
-)
+	var DataTemporary *sweetmemories.Memory
 ```
+
+```
+	func init(){
+		DataTemporary = sweetmemories.New()
+	}
+```
+
 
 ```
 	data := []Data{}
-
-	if rememberdata.IsForget() { // if cache is nil
-		rememberData.Remember(getData(), 600*time.Second) //Fill your cache memory
+	if DataTemporary.IsForget() { // if cache is nil
+		DataTemporary.Save(getData(), 600*time.Second) //Fill your cache memory
+	}
+	if dt, ok := data.GetMemory().([]Data); ok {
+			data = dt
 	}
 
-	w, err := rememberData.GetMemory() //Get your memory
-	if err != nil && len(w) == 0 {
-		log.Println("Data Cache is Failing", err)
-		data = getData() // If fail, we can't do anything except get data from your source
-	} else {
-		e := json.Unmarshal(w, &data)
-		if e != nil {
-			log.Println(e)
-			data = getData() // If fail, we can't do anything except get data from your source
-		}
-	}
 ```
+
 
 ```
 

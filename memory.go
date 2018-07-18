@@ -1,7 +1,6 @@
 package sweetmemories
 
 import (
-	"encoding/json"
 	"time"
 )
 
@@ -10,22 +9,21 @@ func (m *Memory) Forget() {
 	return
 }
 
-func (m *Memory) Remember(sweet interface{}, timeToForget time.Duration) {
-	m.Data = sweet
-	m.TimeToForget = timeToForget
-	go m.forgetByTime(timeToForget)
+func (m *Memory) Save(data interface{}, ttl time.Duration) {
+	m.Data = data
+	m.TimeToForget = ttl
+	go m.forgetByTime()
 	return
 }
 
-func (m *Memory) forgetByTime(timeToForget time.Duration) {
-	time.Sleep(timeToForget)
+func (m *Memory) forgetByTime() {
+	time.Sleep(m.TimeToForget)
 	m.Forget()
 	return
 }
 
-func (m *Memory) GetMemory() (result []byte, err error) {
-	result, err = json.Marshal(m.Data)
-	return
+func (m *Memory) GetMemory() interface{} {
+	return m.Data
 }
 
 func (m *Memory) IsForget() bool {
@@ -33,4 +31,8 @@ func (m *Memory) IsForget() bool {
 		return true
 	}
 	return false
+}
+
+func New() *Memory {
+	return &Memory{}
 }
