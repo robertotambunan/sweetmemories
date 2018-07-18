@@ -28,7 +28,7 @@ If you want to not get data from database everytime, you can simply use sweet me
 	if DataTemporary.IsForget() { // if cache is nil
 		DataTemporary.Save(getData(), 600*time.Second) //Fill your cache memory
 	}
-	if dt, ok := data.GetMemory().([]Data); ok {
+	if dt, ok := DataTemporary.GetMemory().([]Data); ok {
 			data = dt
 	}
 
