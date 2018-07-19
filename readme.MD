@@ -1,5 +1,7 @@
 # Sweet Memories
 
+[![Build Status](https://travis-ci.org/robertotambunan/sweetmemories.svg?branch=master)](https://travis-ci.org/robertotambunan/sweetmemories)
+
 ### How to install
 go get -v github.com/robertotambunan/sweetmemories
 
